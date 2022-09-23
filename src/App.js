@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import AdvanceFormValidation from './components/AdvanceFormValidation/AdvanceFormValidation';
+import BasicForm from './components/BasicForm/BasicForm';
+import DynamicForm from './components/DynamicForm/DynamicForm';
+import FormValidation from './components/FormValidation/FormValidation';
+import Validation from './components/Validation/Validation';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+    {/* <BasicForm /> */}
+    {/* <DynamicForm /> */}
+    {/* <Validation /> */}
+    {/* <FormValidation /> */}
+    <AdvanceFormValidation />
     </div>
   );
 }
