@@ -22,7 +22,7 @@ const AdvanceFormValidation = () => {
                             message: "Full name cannot be empty",
                         },
                         pattern: {
-                            value: /^[A-Za-z]+$/,
+                            value: /^[A-Za-z" "]+$/,
                             message: "Full name cannot contain numbers."
                         },
                         minLength: {
@@ -128,7 +128,7 @@ const AdvanceFormValidation = () => {
                     </div>
                 )}
             </div>
-            <div className="form-group mb-3 d-flex multi-inputs">
+            <div className="form-group d-flex multi-inputs">
                 <label htmlFor="password" className="form-label">Choose your gender :</label>
                 <div>
                     <div className="form-check form-check-inline">
@@ -141,7 +141,7 @@ const AdvanceFormValidation = () => {
                         <label className="form-check-label" htmlFor="male">Male</label>
                     </div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="female" id="inlineRadio2" value="female" {...register('gender', {
+                        <input className="form-check-input" type="radio" name="female" id="female" value="female" {...register('gender', {
                             required: {
                                 value: true,
                                 message: "This field is required."
@@ -150,7 +150,7 @@ const AdvanceFormValidation = () => {
                         <label className="form-check-label" htmlFor="female">Female</label>
                     </div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="other" id="inlineRadio3" value="other" {...register('gender', {
+                        <input className="form-check-input" type="radio" name="other" id="other" value="other" {...register('gender', {
                             required: {
                                 value: true,
                                 message: "This field is required."
@@ -164,19 +164,29 @@ const AdvanceFormValidation = () => {
             </div>
             {
                 errors.gender && (
-                    <small className='text-danger'>
+                    <small className='text-danger mb-3'>
                         {errors.gender.message}
                     </small>
                 )
             }
-            <div className='mb-3 d-flex multi-inputs'>
+            <div className='mb-3'>
                 <div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="video" {...register('agree_terms_conditions', {
-                            required: true,
+                        <input className="form-check-input" type="checkbox" id="tandc" {...register('agree_terms_conditions', {
+                            required: {
+                                value: true,
+                                message:"This field is required."
+                            },
                         })} />
-                        <label className="form-check-label" htmlFor="video">I agree all terms & conditions.</label>
+                        <label className="form-check-label" htmlFor="tandc">I agree all terms & conditions.</label>
                     </div>
+                    {
+                        errors.agree_terms_conditions && (
+                            <div className='text-danger small'>
+                                {errors.agree_terms_conditions.message}
+                            </div>
+                        )
+                    }
                 </div>
             </div>
             <input className='btn btn-primary' type="submit" />
@@ -184,4 +194,4 @@ const AdvanceFormValidation = () => {
     )
 }
 
-export default AdvanceFormValidation
+export default AdvanceFormValidation;
