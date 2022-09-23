@@ -6,7 +6,7 @@ const AdvanceFormValidation = () => {
     const { register, formState: { errors }, handleSubmit } = useForm({
         mode: "onTouched" // validation happens at onChange event. default value is onSubmit. possible values are -- all, onBlur, onTouched, onChange, onSubmit.
     });
-    console.log(errors);
+    // console.log(errors);
     const onSubmit = data => {
         console.log(data);
     }
