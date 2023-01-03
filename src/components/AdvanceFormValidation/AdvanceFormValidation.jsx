@@ -88,7 +88,8 @@ const AdvanceFormValidation = () => {
                             message: "Password should be atleast 8 characters long."
                         },
                         pattern: {
-                            value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/,
+                            // value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/,
+                            value: /^(?=.*[0-9])(?=.*[- ?!@#$%^&*\/\\])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9- ?!@#$%^&*\/\\]{8,30}$/,
                             message: "Password should contain atleast one lowercase, one uppercase and one symbol.",
                         },
                         maxLength: {
