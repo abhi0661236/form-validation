@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames'
 
 const AdvanceFormValidation = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm({
+    const { register, formState: { errors }, handleSubmit, watch } = useForm({
         mode: "onTouched" // validation happens at onChange event. default value is onSubmit. possible values are -- all, onBlur, onTouched, onChange, onSubmit.
     });
     // console.log(errors);
@@ -102,6 +102,36 @@ const AdvanceFormValidation = () => {
                     errors.password && (
                         <div className='invalid-feedback'>
                             {errors.password.message}
+                        </div>
+                    )
+                }
+            </div>
+            <div className="form-group mb-3">
+                <label htmlFor="c_password" className="form-label">Confirm New Password:</label>
+                <input
+                    type="password"
+                    id="c_password"
+                    className={classNames('form-control bg-gray-100', { "is-invalid": errors.confirm_password })}
+                    autoComplete='new-password'
+                    name='confirm_password'
+                    {
+                    ...register("confirm_password", {
+                        required: {
+                            value: true,
+                            message: "This field is required."
+                        },
+                        validate: (val) => {
+                            if (watch('password') !== val) {
+                                return "Your passwords do no match";
+                            }
+                        },
+                    })
+                    }
+                />
+                {
+                    errors.confirm_password && (
+                        <div className='invalid-feedback'>
+                            {errors.confirm_password.message}
                         </div>
                     )
                 }
